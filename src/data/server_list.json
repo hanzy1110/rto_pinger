@@ -1,0 +1,11 @@
+
+  [
+    {
+      "target_url": "http://10.0.0.2:60000/test_api",
+      "server_name": "Servidor Lenovo (RTO_BKP_SVR)"
+    },
+    {
+      "target_url": "http://10.0.0.5:60000/test_api",
+      "server_name": "Servidor X-ROAD Transporte (RTO_DPT_SVR)"
+    }
+  ]
