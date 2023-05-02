@@ -1,4 +1,4 @@
-use dotenv::{dotenv, Result as DotEnvRes};
+use dotenv::{from_filename, Result as DotEnvRes};
 use lettre::{
     transport::smtp::authentication::Credentials, AsyncSmtpTransport, AsyncTransport, Message,
     Tokio1Executor,
@@ -58,7 +58,10 @@ struct ServerInfo {
 
 impl MailInfo {
     fn new() -> DotEnvRes<Self> {
-        dotenv().ok();
+        let env_path = std::path::Path::new("/home/ubuntu/git/rto_pinger/.env");
+        // Load the environment variables from the .env file.
+        from_filename(env_path)?;
+        // dotenv().ok();
         let smtp_user: String = std::env::var("SMTP_USER").expect("SMTP_USER not found!");
         let smtp_relay: String = std::env::var("SMTP_RELAY").expect("SMTP_relay not found!");
         let smtp_pass: String = std::env::var("SMTP_PASSWORD").expect("SMTP_pass not found!");
