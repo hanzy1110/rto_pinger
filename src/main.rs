@@ -80,7 +80,10 @@ impl MailInfo {
 
 impl Mail {
     fn new(to: impl Into<String>) -> Self {
-        dotenv().ok();
+        let env_path = std::path::Path::new("/home/ubuntu/git/rto_pinger/.env");
+        // Load the environment variables from the .env file.
+        from_filename(env_path).unwrap();
+        // dotenv().ok();
         Self {
             from: std::env::var("SMTP_USER").expect("SMTP_USER not found!"),
             subject: "Control Servidores RTO".into(),
